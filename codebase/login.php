@@ -66,8 +66,7 @@
           </div>
           <button type="button" id="signingUp" class="btn" name="signingUp"> Sign Up </button>
 
-          <!-- <button type="button" id="signingUp" name="signingUp" class="btn" onfocus="window.open('./details.php','_self')" > Sign Up </button> -->
-          <p class="social-text">Or Sign up with social platforms</p>
+                     <p class="social-text">Or Sign up with social platforms</p>
           <div class="social-media">
             <a href="#" class="social-icon">
               <i class="fab fa-facebook-f"></i>
