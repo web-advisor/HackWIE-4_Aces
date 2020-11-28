@@ -51,21 +51,21 @@
      })
 	});
 
-  $("#search").click(function () {
-	  $.ajax({
-       type: "POST",
-       url : "http://thefouraces-com.stackstaging.com/actions.php?process=search",
-       data: "loc=" + $("#loc").val() + "&interest=" + $("#interest").val(),
-       success: function(result){
-      //  alert(result);
-         if(result=="1"){
-            window.location.assign("http://thefouraces-com.stackstaging.com/index.php?page=searching");
-         }else{
-           $("#alertDivIn").html(result).show();
-         }
-      }
-     })
-	});
+  // $("#search").click(function () {
+	//   $.ajax({
+  //      type: "POST",
+  //      url : "http://thefouraces-com.stackstaging.com/actions.php?process=search",
+  //      data: "loc=" + $("#loc").val() + "&interest=" + $("#interest").val(),
+  //      success: function(result){
+  //     //  alert(result);
+  //       //  if(result=="1"){
+  //       //     window.location.assign("http://thefouraces-com.stackstaging.com/index.php?page=search");
+  //       //  }else{
+  //       //    $("#alertDivIn").html(result).show();
+  //       //  }
+  //     }
+  //    })
+	// });
 
 
 

@@ -154,35 +154,115 @@
         }
     }
 
-    // Searching 
-    if($_GET["process"]=="search"){
-        // print_r($_POST); 
-        // Geoding Entered Area
-        require "vendor/autoload.php"; 
+    // // Searching 
+    // if($_GET["process"]=="search"){
+    //     // print_r($_POST); 
+    //     // Geoding Entered Area
+    //     require "vendor/autoload.php"; 
         
-        $geocoder = new \OpenCage\Geocoder\Geocoder($key);
-        $result = $geocoder->geocode($_POST["loc"]);
-        if ($result && $result['total_results'] > 0) {
-            $first = $result['results'][0];
-            $insertingUnsigned="INSERT into `unsignedsearch` (`area`,`lat`,`lng`,`interest`) 
-                VALUES ('".mysqli_real_escape_string($link,$_POST['loc'])."',
-                        '".mysqli_real_escape_string($link,$first['geometry']['lat'])."',
-                        '".mysqli_real_escape_string($link,$first['geometry']['lng'])."',
-                        '".mysqli_real_escape_string($link,$_POST['interest'])."')";
-                        // if($_GET["process"]=="signIn"||$_GET["process"]=="signUp"){
-                        //     mysqli_query($link,"INSERT into `unsignedsearch` (`userId`) VALUES ('".mysqli_real_escape_string($link,$_SESSION['id'])."')");
-                        // }
-                $resultUnsigned=mysqli_query($link,$insertingUnsigned);
-                
-                echo "1";               
-        }else{
-            $error="Couldn't Access Location Info - Please try again later ";  
-        }
-        if($error!=""){
-            echo $error;
-            exit();
-        }
-    }
+    //     $geocoder = new \OpenCage\Geocoder\Geocoder($key);
+    //     $result = $geocoder->geocode($_POST["loc"]);
+    //     if ($result && $result['total_results'] > 0) {
+    //         $first = $result['results'][0];
+    //         $insertingUnsigned="INSERT into `unsignedsearch` (`area`,`lat`,`lng`,`interest`) 
+    //             VALUES ('".mysqli_real_escape_string($link,$_POST['loc'])."',
+    //                     '".mysqli_real_escape_string($link,$first['geometry']['lat'])."',
+    //                     '".mysqli_real_escape_string($link,$first['geometry']['lng'])."',
+    //                     '".mysqli_real_escape_string($link,$_POST['interest'])."')";
+    //                     // if($_GET["process"]=="signIn"||$_GET["process"]=="signUp"){
+    //                     //     mysqli_query($link,"INSERT into `unsignedsearch` (`userId`) VALUES ('".mysqli_real_escape_string($link,$_SESSION['id'])."')");
+    //                     // }
+    //             mysqli_query($link,$insertingUnsigned);
+    //             $lat=$first['geometry']['lat'];
+    //             $lng=$first['geometry']['lng'];
+    //             $sql ="SELECT * FROM (SELECT *, 
+    //                     (
+    //                         (
+    //                             (
+    //                                 acos(
+    //                                     sin(( $lat * pi() / 180))
+    //                                     *
+    //                                     sin(( `lat` * pi() / 180)) + cos(( $lat * pi() /180 ))
+    //                                     *
+    //                                     cos(( `lat` * pi() / 180)) * cos((( $lng - `lng`) * pi()/180)))
+    //                             ) * 180/pi()
+    //                         ) * 60 * 1.1515 * 1.609344
+    //                     )
+    //                 as distance FROM `address`
+    //             ) `address`
+    //             WHERE distance <= 50 
+    //             ORDER BY distance LIMIT 200";
+    //             $resultNear=mysqli_query($link,$sql);     
+    //             $rowNear=mysqli_fetch_all($resultNear);
+    //                 // print_r($row);
+    //             // if($rowNear>0){
+    //             //     print_r($rowNear);
+    //             // }      
+    //             if(mysqli_num_rows($resultNear)>0){
+    //                 $arraylength=mysqli_num_rows($resultNear);
+    //                 echo $arraylength;
+    //                 // session_start();
+    //                 // $_SESSION['search_id'] = array(1,2,3,4,5,6,7);   
+                 
+    //             //  header('Location:index.php?page=search'); 
+                                    
+    //                 echo '
+    //                     <div id="search-result">
+    //                         <div class="map">';
 
+
+    //                             for ($i=0; $i <=$arraylength; $i++) {
+    //                                 $x=rand(0,90);
+    //                                 $r=(int)sqrt(2025-pow($x-45,2));
+    //                                 $y=rand(-1*$r,$r)+42;
+    //                                 echo '
+    //                                 <i class="fas fa-map-marker-alt" alt="mark" data-toggle="modal" data-target="#Modal',$i,'"
+    //                                 style="color: #c73cc7; font-size: 30px; position: absolute; top:',$y,'%; left:',$x,'%; cursor: pointer;" >
+                                    
+    //                             </i>
+    //                             <div class="modal fade" id="Modal',$i,'" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    //                             <div class="modal-dialog" role="document">
+    //                                 <div class="modal-content">
+    //                                 <div class="modal-header">
+    //                                     <h5 class="modal-title" id="ModalLabel">Name',$i,'</h5>
+    //                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    //                                     <span aria-hidden="true">&times;</span>
+    //                                     </button>
+    //                                 </div>
+    //                                 <div class="modal-body">
+    //                                     ...
+    //                                 </div>
+    //                                 <div class="modal-footer">
+    //                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    //                                     <a href="';
+    //                                         if(isset($_SESSION['id'])){
+    //                                             echo "#";
+    //                                         }
+    //                                         else
+    //                                             echo "index.php?page=login";
+    //                                     echo '">
+    //                                         <button type="button" class="btn btn-primary">View Profile</button>
+    //                                     </a>
+    //                                 </div>
+    //                                 </div>
+    //                             </div>
+    //                             </div>	
+    //                         ';}
+    //                         echo '
+    //                         </div>
+    //                     </div>';
+    //             }
+
+                  
+	                
+    //             // echo "1";               
+    //     }else{
+    //         $error="Couldn't Access Location Info - Please try again later ";  
+    //     }
+    //     if($error!=""){
+    //         echo $error;
+    //         exit();
+    //     }
+    // }
 
 ?>
