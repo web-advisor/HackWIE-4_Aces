@@ -26,7 +26,7 @@
 			</form>
 			</div>
 			<div class="col-md-4 ml-auto">
-				<img class="mt-2" width="100%" src="images/Banner.png" />
+				<img class="mt-2" width="100%" src="../images/Banner.png" />
 			</div>
 		</div>
 		</div>

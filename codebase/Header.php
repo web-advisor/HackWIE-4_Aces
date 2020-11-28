@@ -17,7 +17,7 @@
 	<nav class="navbar navbar-light navbar-expand-lg bg-danger" style="padding: 0;">
     <div class="container-fluid">
         <div class="navbar-brand">
-            <a href="http://thefouraces-com.stackstaging.com/"><img class="logo" src="images/logo.png" style="margin-left: 10px; width: 67px;"></a>
+            <a href="http://thefouraces-com.stackstaging.com/"><img class="logo" src="../images/logo.jpeg" style="margin-left: 10px; width: 67px;"></a>
         </div>
         <button class="nav-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
             <span class="navbar-toggler-icon"></span>
