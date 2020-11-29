@@ -51,21 +51,22 @@
      })
 	});
 
-  // $("#search").click(function () {
-	//   $.ajax({
-  //      type: "POST",
-  //      url : "http://thefouraces-com.stackstaging.com/actions.php?process=search",
-  //      data: "loc=" + $("#loc").val() + "&interest=" + $("#interest").val(),
-  //      success: function(result){
-  //     //  alert(result);
-  //       //  if(result=="1"){
-  //       //     window.location.assign("http://thefouraces-com.stackstaging.com/index.php?page=search");
-  //       //  }else{
-  //       //    $("#alertDivIn").html(result).show();
-  //       //  }
-  //     }
-  //    })
-	// });
+  $("#search").click(function () {
+	  $.ajax({
+       type: "POST",
+       url : "http://thefouraces-com.stackstaging.com/actions.php?process=search",
+       data: "location="+$("#location").val()+"&loc=" + $("#loc").val() +"&career="+$("#career").val()+"&interest=" + $("#interest").val()+ "&furthergive="+$("#further").val()+"&further=" + $("#further").val() +"&organisation="+$("#organisation").val()+"&org=" + $("#org").val() ,
+      // data: "loc="+  $("#location").val() ,
+      success: function(result){
+      //  console.log(result);
+         if(result=="1"){
+            window.location.assign("http://thefouraces-com.stackstaging.com/index.php?page=search");
+         }else{
+           $("#alertDivIn").html(result).show();
+         }
+      }
+     })
+	});
 
 
 

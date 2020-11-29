@@ -7,8 +7,8 @@
          include("login.php");
     }else if($_GET['page']=="profile"){
         include("details.php");
-    // }else  if($_GET['page']=="searching"){
-    //     include("search_user.php");
+    }else  if($_GET['page']=="contact"){
+        include("contact.php");
     }else {
          include("Home.php");
     }

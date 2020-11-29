@@ -26,7 +26,7 @@
           </div>
           <div class="input-field">
             <i class="centered fas fa-user"></i>
-            <input type="text" placeholder="Username" id="usernameIn" name="usernameIn" />
+            <input type="text" placeholder="Username or Email" id="usernameIn" name="usernameIn" />
           </div>
           <div class="input-field">
             <i class="centered fas fa-lock"></i>
@@ -66,7 +66,8 @@
           </div>
           <button type="button" id="signingUp" class="btn" name="signingUp"> Sign Up </button>
 
-                     <p class="social-text">Or Sign up with social platforms</p>
+          <!-- <button type="button" id="signingUp" name="signingUp" class="btn" onfocus="window.open('./details.php','_self')" > Sign Up </button> -->
+          <p class="social-text">Or Sign up with social platforms</p>
           <div class="social-media">
             <a href="#" class="social-icon">
               <i class="fab fa-facebook-f"></i>
