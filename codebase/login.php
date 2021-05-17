@@ -59,7 +59,7 @@
           <div class="input-field">
             <i class="centered fas fa-envelope"></i>
             <input type="email" id="email" name="email" placeholder="Email" />
-          </div>
+          </div>  
           <div class="input-field">
             <i class="centered fas fa-lock"></i>
             <input type="password" placeholder="Password" id="passwordUp" name="passwordUp" formmethod="post" />
