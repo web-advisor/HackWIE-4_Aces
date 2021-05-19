@@ -16,14 +16,15 @@
         // Signing in the user after checking
         $query="SELECT * FROM `users` WHERE `email` = '".mysqli_real_escape_string($link,$_POST['usernameIn'])."' OR `name`='".mysqli_real_escape_string($link,$_POST['usernameIn'])."' LIMIT 1";
         $result=mysqli_query($link,$query);
-        $row=mysqli_fetch_assoc($result);
-        if($row['password']==md5(md5($row['id']).$_POST['passwordIn'])){
-            echo 1;
-            $_SESSION['id']=$row['id'];
-        }else{
-            $error="Could not find that Username-Password Combination ! Please try Again !";
+        if($result){
+            $row=mysqli_fetch_assoc($result);
+            if($row['password']==md5(md5($row['id']).$_POST['passwordIn'])){
+                echo 1;
+                $_SESSION['id']=$row['id'];
+            }else{
+                $error="Could not find that Username-Password Combination ! Please try Again !";
+            }
         }
-
         if($error!=""){
             echo $error;
             exit();
@@ -53,7 +54,8 @@
         // Checking if the Signing Up input email is already taken
         $query="SELECT * FROM `users` WHERE `email` = '".mysqli_real_escape_string($link,$_POST['email'])."' LIMIT 1";
         $result=mysqli_query($link,$query);
-        if(mysqli_num_rows($result)>0){
+        
+        if($result && mysqli_num_rows($result)>0){
             $error="This Email id is already taken !";
         }else{
             // Siging up if no errors found
@@ -84,7 +86,7 @@
         
             $existCheck="SELECT `userId` FROM `info` WHERE `userId` = '".mysqli_real_escape_string($link,$_SESSION['id'])."' LIMIT 1";
             $resultEC=mysqli_query($link,$existCheck);
-            if(mysqli_num_rows($resultEC)>0){
+            if($resultEC && mysqli_num_rows($resultEC)>0){
                 $updatingInfo="UPDATE `info`
                     SET `fname`='".mysqli_real_escape_string($link,$_POST['fname'])."',
                         `lname`='".mysqli_real_escape_string($link,$_POST['lname'])."',
@@ -113,18 +115,18 @@
             }
 
         // Address Geocoding :: 
-        require "vendor/autoload.php"; 
+        require "vendor/autoload.php";
         
         $geocoder = new \OpenCage\Geocoder\Geocoder($key);
         $result = $geocoder->geocode($_POST["city"] .','.$_POST["state"].','.$_POST["pin"]);
-        if ($result && $result['total_results'] > 0) {
+        if ($result['total_results'] > 0) {
             $first = $result['results'][0];
-            // print $first['geometry']['lng'] . ';' . $first['geometry']['lat'] . ';' .$_SESSION['id'] ."\n";
+            # print $first['geometry']['lng'] . ';' . $first['geometry']['lat'] . ';' .$_SESSION['id'] ."\n";
             # 4.360081;43.8316276;6 Rue Massillon, 30020 Nîmes, Frankreich
 
             $existAdd="SELECT `userId` FROM `address` WHERE `userId` = '".mysqli_real_escape_string($link,$_SESSION['id'])."' LIMIT 1";
             $resultAdd=mysqli_query($link,$existAdd);
-            if(mysqli_num_rows($resultAdd)>0){    
+            if($resultAdd && mysqli_num_rows($resultAdd)>0){    
                 $updatingLatLng="UPDATE `address` 
                 SET `city`='".mysqli_real_escape_string($link,$_POST['city'])."',
                     `state`='".mysqli_real_escape_string($link,$_POST['state'])."',

@@ -127,7 +127,7 @@ html {
 
 .map{
 	margin: 50px auto;
-	background: url(../images/map.png);
+	background: url(../../images/map.png);
 	background-size: cover;
 	border-radius: 100%;
 	width: 450px;

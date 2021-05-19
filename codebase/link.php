@@ -1,5 +1,11 @@
 <?php
-    $link=mysqli_connect("shareddb-x.hosting.stackcp.net","LinkInLocal-313537530f","BMCSMC@4.0","LinkInLocal-313537530f");
+    # Development Credentials :
+    $host="localhost";
+    $userName="amar";
+    $password="webadvisor@0401";
+    $dbName="neighbour";  
+
+    $link=mysqli_connect($host,$userName,$password,$dbName);
     if(mysqli_connect_error()){
         echo "Unable to connect to database .Please try again later .";
     }

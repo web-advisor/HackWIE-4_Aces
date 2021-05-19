@@ -1,5 +1,3 @@
-
-
 <script type="text/javascript">
 	$(function(){
 		window.scrollTo(0,500);
@@ -87,12 +85,17 @@
 				</div>
 
 				<div class="input-group mb-2 mr-sm-2">
-					<input type="text" class="form-control" id="loc" name="loc" value="<?php print_r($address); ?>">
+					<input type="text" class="form-control" id="loc" name="loc" value="<?php
+						if(!(isset($address))){
+							print_r("");
+						}else{
+							print_r($address);
+						} ?>" placeholder="City, State, PIN">
 				</div>
 			</form>
 			<form class="form-inline">
 				<div class="form-check mb-2 mr-sm-2">
-					<input class="form-check-input" type="checkbox" id="career" <?php if($career!="undefined") echo "checked"; ?> > 
+					<input class="form-check-input" type="checkbox" id="career" <?php if(isset($career)) echo "checked"; ?> > 
 					<label class="form-check-label" for="career">
 					Major Career Interest : 
 					</label>
@@ -100,7 +103,7 @@
 
 				<div class="input-group mb-2 mr-sm-2">
 				<select class="form-control" id="interest" name="interest">
-					<option value="<?php if($career!="undefined") print_r($career); ?>"><?php if($career!="undefined") print_r($career); ?></option>
+					<option value="<?php if(isset($career)) print_r($career); else print_r("Choose Career Field"); ?>"><?php if(isset($career)) print_r($career); else print_r("Choose Career Field");  ?></option>
 					<option id="o1" value="Architecture and Engineering">Architecture and Engineering</option>
 					<option id="o2" value="Arts,Culture and Entertainment">Arts,Culture and Entertainment</option>
 					<option id="o3" value="Business,Management and Administration">Business,Management and Administration</option>
@@ -119,14 +122,14 @@
 			</form>
 			<form class="form-inline">
 				<div class="form-check mb-2 mr-sm-2">
-					<input class="form-check-input" type="checkbox" id="further" name="further" <?php if($further!="") echo "checked";?> > 
+					<input class="form-check-input" type="checkbox" id="further" name="further" <?php if(isset($further)) echo "checked"; ?> > 
 					<label class="form-check-label" for="further">
 					Refining Area <pre>        </pre>: 
 					</label>
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op1">
 				<select class="form-control" id="archEngg" name="archEngg">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Architect">Architect</option>
 					<option value="Civil engineer">Civil engineer</option>
 					<option value="Landscape Architect">Landscape Architect</option>
@@ -137,7 +140,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op2">
 				<select class="form-control" id="arts" name="arts">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Singer/Songwriter/Music Producer">Singer/Songwriter/Music Producer</option>
 					<option value="Art curator">Art curator</option>
 					<option value="Graphic designer">Graphic Designer</option>
@@ -149,7 +152,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op3">
 				<select class="form-control" id="BBA" name="BBA">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Human resources Manager">Human resources Manager</option>
 					<option value="Marketing assistant">Marketing assistant</option>
 					<option value="Accountant">Accountant</option>
@@ -161,7 +164,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op4">
 				<select class="form-control" id="comm" name="comm">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Journalist">Journalist</option>
 					<option value="Copy Writer">Copy Writer</option>
 					<option value="Public relations specialist">Public relations specialist</option>
@@ -172,7 +175,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op5">
 				<select class="form-control" id="SSer" name="SSer">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="School counselor">School counselor</option>
 					<option value="Speech pathologist">Speech pathologist</option>
 					<option value="Rehabilitation counselor">Rehabilitation counselor</option>
@@ -184,7 +187,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op6">
 				<select class="form-control" id="Edu" name="Edu">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="School teacher">School teacher</option>
 					<option value="College professor">College professor</option>
 					<option value="Coaching teacher">Coaching teacher</option>
@@ -195,7 +198,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op7">
 				<select class="form-control" id="SciTech" name="SciTech">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value=""></option>
 					<option value="Archeologist">Archeologist</option>
 					<option value="Software engineer">Software engineer</option>
@@ -207,7 +210,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op8">
 				<select class="form-control" id="mech" name="mech">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Auto mechanic">Auto mechanic</option>
 					<option value="Landscaper and groundskeeper">Landscaper and groundskeeper</option>
 					<option value="Plumber">Plumber</option>    
@@ -215,7 +218,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op9">
 				<select class="form-control" id="farm" name="farm">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Agricultural worker">Agricultural worker</option>
 					<option value="Animal breeder">Animal breeder</option>
 					<option value="Nursery worker">Nursery worker</option>
@@ -225,7 +228,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op10">
 				<select class="form-control" id="govt" name="govt">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Research Associate">Research Associate</option>
 					<option value="IT Consultant">IT Consultant</option>
 					<option value="Government school staff">Government school staff</option>
@@ -233,7 +236,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op11">
 				<select class="form-control" id="med" name="med">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Anesthesiologist">Anesthesiologist</option>
 					<option value="Dental assistant">Dental assistant</option>
 					<option value="Nurse">Nurse</option>
@@ -244,7 +247,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="op12">
 				<select class="form-control" id="law" name="law">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Public administrator">Public administrator</option>
 					<option value="Paralegal">Paralegal</option>
 					<option value="Lawyer">Lawyer</option>
@@ -254,7 +257,7 @@
 				</div>
 				<div class="input-group mb-2 mr-sm-2" id="">
 				<select class="form-control" id="sales" name="sales">
-					<option value="<?php if($further!="undefined") print_r($further); ?>"><?php if($further!="undefined") print_r($further); ?></option>
+					<option value="<?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?>"><?php if(isset($further)) print_r($further); else print_r("Choose further Field"); ?></option>
 					<option value="Sales associate">Sales associate</option>
 					<option value="Sales development rep">sales development rep</option>
 					<option value="Account executive">Account executive</option>
@@ -266,20 +269,20 @@
 			</form>
 			<form class="form-inline">
 				<div class="form-check mb-2 mr-sm-2">
-					<input class="form-check-input" type="checkbox" id="organisation" name="organisation" <?php if($organisation!="undefined") echo "checked"; ?> > 
+					<input class="form-check-input" type="checkbox" id="organisation" name="organisation" <?php if(isset($organisation)) echo "checked"; ?> > 
 					<label class="form-check-label" for="organisation">
 					Organisation<pre>        </pre>:
 					</label>
 				</div>
 
 				<div class="input-group mb-2 mr-sm-2">
-					<input type="text" class="form-control" id="org" name="org" value="<?php if($organisation!="undefined") print_r($organisation); ?>" >
+					<input type="text" class="form-control" id="org" name="org" value="<?php if(isset($organisation)) print_r($organisation); else print_r("Choose Organisation") ?>" >
 				</div>
 			</form>
 			<button type="button" id="search" name="search" class="btn btn-outline-dark">Search</button>
 			</div>
 			<div class="col-md-4 ml-auto">
-				<img class="mt-2" width="100%" src="images/Banner.png" />
+				<img class="mt-2" width="100%" src="../images/Banner.png" />
 			</div>
 		</div>
 	</div>
@@ -305,7 +308,7 @@
 			</form>
 			</div>
 			<div class="col-md-4 ml-auto">
-				<img class="mt-2" width="100%" src="images/Banner.png" />
+				<img class="mt-2" width="100%" src="../images/Banner.png" />
 			</div>
 		</div>
 		</div>
@@ -316,7 +319,7 @@
 
 
 	if (!isset($_SESSION['searched'])){
-		print_r($_SESSION["searched"]);
+		// print_r($_SESSION["searched"]);
 
 		echo'
 		<div id="search-tag">

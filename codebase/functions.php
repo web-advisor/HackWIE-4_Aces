@@ -1,6 +1,9 @@
 <?php
     session_start();
     include("link.php");
+    if(!(isset($_GET['process']))){
+        $_GET['process']="";
+    }
     if($_GET['process']=="logout"){
         session_unset();
     }

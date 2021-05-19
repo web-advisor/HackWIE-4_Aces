@@ -1,16 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Contact Us</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="CSS/style.css">
-    <script src="JQuery/jQuery3.5.1.js"></script>
-    <script src="Bootstrap/js/bootstrap.js"></script>
-    <script src="fontawesome/js/all.js"></script>
-
-</head> -->
 <head>
 <style>
 

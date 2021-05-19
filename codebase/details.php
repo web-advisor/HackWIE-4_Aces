@@ -1,16 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>Profile</title>
-</head>
-
-<body style=" background-color: #14b7ee"> -->
-
 <head>
     <link rel="stylesheet" href="details.css" />  
     <style type="text/css">
@@ -34,25 +21,88 @@
     // Preloaded Values of Input field
     $check="SELECT * FROM `info`,`address` 
     WHERE info.userId=".$_SESSION['id']." AND `address`.userId=".$_SESSION['id']." LIMIT 1";
-    $resultcheck=mysqli_query($link,$check);
-    $rowcheck=mysqli_fetch_assoc($resultcheck);
-    $fname=$rowcheck['fname'];
-    $lname=$rowcheck['lname'];
-    $career=$rowcheck['career'];
-    $further=$rowcheck['further'];
-    $organisation=$rowcheck['organisation'];
-    $phone=$rowcheck['phone'];
-    $dob=$rowcheck['dob'];
-    $city=$rowcheck['city'];
-    $state=$rowcheck['state'];
-    $pin=$rowcheck['pin'];
-    $bio=$rowcheck['bio'];
 
+    // $check="SELECT * FROM `info` 
+    // WHERE info.userId=".$_SESSION['id']." LIMIT 1";
+    $resultcheck=mysqli_query($link,$check);
+    if($resultcheck){
+        // print_r($resultcheck);
+        $rowcheck=mysqli_fetch_assoc($resultcheck);
+        // print_r($rowcheck);
+        if(!(isset($rowcheck['fname']))){
+            $fname="";
+        }else{
+            $fname=$rowcheck['fname'];
+        }
+
+        if(!(isset($rowcheck['lname']))){
+            $lname="";
+        }else{
+            $lname=$rowcheck['lname'];
+        }
+
+        if(!(isset($rowcheck['career']))){
+            $career="";
+        }else{
+            $career=$rowcheck['career'];
+        }
+        
+        if(!(isset($rowcheck['further']))){
+            $further="";
+        }else{
+            $further=$rowcheck['further'];
+        }
+
+        if(!(isset($rowcheck['organisation']))){
+            $organisation="";
+        }else{
+            $organisation=$rowcheck['organisation'];
+        }
+        
+        if(!(isset($rowcheck['phone']))){
+            $phone="";
+        }else{
+            $phone=$rowcheck['phone'];
+        }
+
+        if(!(isset($rowcheck['dob']))){
+            $dob="";
+        }else{
+            $dob=$rowcheck['dob'];
+        }
+
+        if(!(isset($rowcheck['city']))){
+            $city="";
+        }else{
+            $city=$rowcheck['city'];
+        }
+
+        if(!(isset($rowcheck['state']))){
+            $state="";
+        }else{
+            $state=$rowcheck['state'];
+        }
+
+        if(!(isset($rowcheck['pin']))){
+            $pin="";
+        }else{
+            $pin=$rowcheck['pin'];
+        }
+
+        if(!(isset($rowcheck['bio']))){
+            $bio="";
+        }else{
+            $bio=$rowcheck['bio'];
+        }
+        
+    }
     // Deduced from username
     $query="SELECT `name` FROM `users` WHERE `id`=".$_SESSION['id']." LIMIT 1";
     $result=mysqli_query($link,$query);
-    $row=mysqli_fetch_assoc($result);
-    $nameArray = str_split($row['name']);
+    if($result){
+        $row=mysqli_fetch_assoc($result);
+        $nameArray = str_split($row['name']);
+    }
     $reverseName=array_reverse($nameArray);
     $firstName="";
     $lastName="";
@@ -93,7 +143,7 @@
                     <input type="text" id="fname" name="fname" placeholder="First Name" value="<?php            
                     $nameCheck="SELECT `userId` FROM `info` WHERE `userId`='".mysqli_real_escape_string($link,$_SESSION['id'])."' LIMIT 1";
                     $resultNC=mysqli_query($link,$nameCheck);
-                    if(mysqli_num_rows($resultNC)>0){
+                    if($resultNC && mysqli_num_rows($resultNC)>0){
                         echo $fname;
                     }else{
                         echo $firstName;
@@ -103,7 +153,7 @@
                 <div class="input-field">
                     <i class="centered fas fa-user"></i>
                     <input type="text" id="lname" name="lname" placeholder="Last Name" value="<?php 
-                    if(mysqli_num_rows($resultNC)>0){
+                    if($resultNC && mysqli_num_rows($resultNC)>0){
                         echo $lname;
                     }else{
                         echo strrev($lastName);
